@@ -11,33 +11,30 @@ public class dash extends JFrame implements ActionListener {
     JButton btnRegTeam = new JButton("Register Team");
     JButton btnViewSolo = new JButton("View Players");
     JButton btnViewTeams = new JButton("View Teams");
-    JButton btnCSV = new JButton("Import CSV");
+    JButton btnCSV = new JButton("Import CSV");   // ✅ restored
+    JButton btnWinnerTeam = new JButton("Winner Team");
+    JButton btnWinnerPlayer = new JButton("Winner Player");
     JButton btnLogout = new JButton("Logout");
 
     public dash(String id) {
         setTitle("Dashboard - " + id);
-        setSize(400, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setResizable(false);
+        setSize(400, 480);
         setLayout(null);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        JLabel lbl = new JLabel("Welcome, " + id + "!", SwingConstants.CENTER);
-        lbl.setFont(new Font("Arial", Font.BOLD, 14));
-        lbl.setBounds(0, 15, 400, 28);
-        add(lbl);
+        int x = 100, y = 30, w = 180, h = 30, gap = 40;
 
-        int x = 115, y = 75, w = 150, h = 32, gap = 43;
-
-        JButton[] buttons = {
+        JButton[] btns = {
             btnRegSolo, btnRegTeam, btnViewSolo,
-            btnViewTeams, btnCSV, btnLogout
+            btnViewTeams, btnCSV, btnWinnerTeam,
+            btnWinnerPlayer, btnLogout
         };
 
-        for (JButton b : buttons) {
+        for (JButton b : btns) {
             b.setBounds(x, y, w, h);
-            b.addActionListener(this);
             add(b);
+            b.addActionListener(this);
             y += gap;
         }
 
@@ -45,19 +42,22 @@ public class dash extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        Object src = e.getSource();
+        Object s = e.getSource();
 
-        if (src == btnRegSolo) new reg();
-        else if (src == btnRegTeam) new teamreg();
-        else if (src == btnViewSolo) new view();
-        else if (src == btnViewTeams) new viewteams();
-        else if (src == btnCSV) importCSV();
-        else if (src == btnLogout) {
+        if (s == btnRegSolo) new reg();
+        else if (s == btnRegTeam) new teamreg();
+        else if (s == btnViewSolo) new view();
+        else if (s == btnViewTeams) new viewteams();
+        else if (s == btnCSV) importCSV();  // ✅ restored
+        else if (s == btnWinnerTeam) new winner_team();
+        else if (s == btnWinnerPlayer) new winner_player();
+        else if (s == btnLogout) {
             new login();
             dispose();
         }
     }
 
+    // ✅ same old CSV method
     private void importCSV() {
         JFileChooser fc = new JFileChooser();
         fc.setFileFilter(new FileNameExtensionFilter("CSV Files", "csv"));

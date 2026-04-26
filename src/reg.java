@@ -70,6 +70,7 @@ public class reg extends JFrame implements ActionListener {
             PreparedStatement ps = con.prepareStatement(
                 "INSERT INTO players(name,gmail,mobile,team_name) VALUES(?,?,?,?)")
         ) {
+            
             ps.setString(1, name);
             ps.setString(2, gmail);
             ps.setString(3, mobile);

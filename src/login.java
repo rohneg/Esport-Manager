@@ -8,7 +8,8 @@ public class login extends JFrame implements ActionListener {
     JPasswordField txtPass = new JPasswordField();
     JButton btnLogin = new JButton("Login");
 
-    public login() {
+    public login() 
+    {
         setTitle("Esports Manager - Login");
         setSize(380, 220);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

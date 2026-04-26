@@ -8,7 +8,9 @@ public class view extends JFrame
 
     DefaultTableModel model = new DefaultTableModel(
         new String[]{"ID","Points","+","-","Name","Gmail","Mobile","Team","Registered At"}, 0) {
-        public boolean isCellEditable(int r, int c) { return c == 2 || c == 3; }
+        public boolean isCellEditable(int r, int c) {
+             return c == 2 || c == 3; 
+        }
     };
     JTable table = new JTable(model);
     JLabel lblCount = new JLabel("Total: 0");
